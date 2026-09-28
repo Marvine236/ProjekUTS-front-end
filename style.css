@@ -41,12 +41,13 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* header */
+/* ================= HEADER ================= */
 header {
     width: 100%;
     min-height: 55px;
     padding: 15px 25px;
-    display:flex;
+    display: flex;
+    flex-wrap: nowrap;              /* header tidak boleh turun baris */
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(90deg, var(--header-light), var(--header-soft));
@@ -55,20 +56,25 @@ header {
 }
 
 /* gambar logo di header */
+.logo {
+    flex-shrink: 0;                 /* logo tidak ikut mengecil/terdorong */
+}
+
 .logo img {
     display: block;
     width: 90px;
     height: 55px;
     border-radius: 50%;
-    border: 3px;
     object-fit: contain;
 }
 
 /* navigasi */
 nav {
     display: flex;
+    flex-wrap: nowrap;
     align-items: center;
     gap: 30px;
+    flex-shrink: 0;                 /* menu tetap satu baris */
 }
 
 nav a {
@@ -76,7 +82,7 @@ nav a {
     font-size: 15px;
     font-weight: bold;
     text-decoration: none;
-    white-space: nowrap;  /* cegah teks turun ke baris */
+    white-space: nowrap;            /* cegah teks turun ke baris */
 }
 
 nav a:hover {
@@ -90,25 +96,26 @@ nav a:hover {
 
 .dropdown-content {
     position: absolute;
-    top: 25px;
+    top: 100%;
     right: 0;
-    width: 150px;
+    width: 170px;
     padding: 8px 0;
-    background: linear-gradient(135deg,var(--yellow), var(--yellow-light));
+    background: linear-gradient(135deg, var(--yellow), var(--yellow-light));
     border-radius: 10px;
     display: none;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     z-index: 100;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
     display: block;
 }
 
 .dropdown-content a {
     display: block;
     padding: 9px 15px;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
     color: var(--black);
 }
@@ -118,8 +125,7 @@ nav a:hover {
     color: var(--brown);
 }
 
-
-/* bagian umkm / hero */
+/* ================= HERO ================= */
 .hero {
     width: 100%;
     min-height: 190px;
@@ -146,7 +152,7 @@ nav a:hover {
 
 .hero-text p {
     margin-bottom: 18px;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.5;
     max-width: 450px;
 }
@@ -154,11 +160,11 @@ nav a:hover {
 /* button */
 .button {
     display: inline-block;
-    padding: 8px 11px;
+    padding: 9px 14px;
     background-color: var(--black);
     color: var(--white);
     text-decoration: none;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
     border-radius: 15px;
     transition: 0.2s;
@@ -182,11 +188,11 @@ nav a:hover {
     border-radius: 5px;
 }
 
-/* produk ungulan */
+/* ================= PRODUK UNGGULAN ================= */
 .products {
     width: 100%;
     padding: 25px 20px;
-    background: linear-gradient(135deg,var(--yellow-light), var(--yellow-soft));
+    background: linear-gradient(135deg, var(--yellow-light), var(--yellow-soft));
 }
 
 .products h2 {
@@ -220,18 +226,18 @@ nav a:hover {
 
 .product-card p {
     margin-top: 7px;
-    font-size: 8px;
+    font-size: 14px;
     font-weight: bold;
 }
 
 .product-card span {
     display: block;
     margin-top: 3px;
-    font-size: 8px;
+    font-size: 13px;
     color: var(--brown);
 }
 
-/* lokasi */
+/* ================= LOKASI ================= */
 .location {
     width: 100%;
     padding: 25px 20px;
@@ -246,7 +252,7 @@ nav a:hover {
 
 /* teks di lokasi */
 .location-text {
-    width: 35%;
+    width: 40%;
 }
 
 .location-text h2 {
@@ -261,21 +267,20 @@ nav a:hover {
     max-width: 350px;
 }
 
-/* gambar di lokasi */
+/* peta di lokasi */
 .location-image {
-    width: 5%;
+    width: 55%;
 }
 
-.location-image img {
+.location-image iframe {
     display: block;
     width: 100%;
-    height: 100px;
-    object-fit: cover;
+    height: 250px;
     border: 1px solid var(--black);
     border-radius: 5px;
 }
 
-/* footer */
+/* ================= FOOTER ================= */
 footer {
     width: 90%;
     max-width: 1100px;
@@ -287,7 +292,7 @@ footer {
     background: linear-gradient(90deg, var(--footer-light), var(--footer-soft));
     font-size: 12px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     flex-wrap: wrap;
     gap: 15px;
 }
@@ -332,40 +337,44 @@ footer {
     transform: scale(1.05);
 }
 
-/* responsiv table */
-@media (max-width: 750px) {
+/* ================= TABLET (max 900px) ================= */
+@media (max-width: 900px) {
 
     .container {
         width: 94%;
         margin: 10px auto;
     }
 
-    /* header */
+    /* header: tetap satu baris */
+    header {
+        padding: 12px 18px;
+    }
+    .logo img {
+        width: 75px;
+        height: 48px;
+    }
     nav {
-        gap: 15px;
+        gap: 20px;
     }
     nav a {
-        font-size: 7px;
+        font-size: 13px;
     }
 
-    /* umkm */
+    /* hero */
     .hero {
         gap: 20px;
-
         padding: 18px;
     }
     .hero-image img {
-        height: 150px;
+        height: 220px;
     }
 
     /* produk */
-
     .product-list {
         gap: 8px;
     }
     .product-card img {
-        height: 110px;
-        object-fit: contain;
+        height: 150px;
     }
 
     /* lokasi */
@@ -373,39 +382,42 @@ footer {
         gap: 20px;
         padding: 18px;
     }
-    .location-image img,
     .location-image iframe {
-        height: 150px;
+        height: 220px;
     }
 }
 
-/* set otomatis ukuran */
-@media (max-width: 550px) {
+/* ================= MOBILE (max 600px) ================= */
+@media (max-width: 600px) {
+
     .container {
         width: 95%;
         margin: 5px auto;
     }
 
-    /* header */
+    /* header: tetap satu baris, hanya diperkecil */
     header {
-        padding: 10px;
-
+        padding: 8px 10px;
         min-height: 50px;
     }
+    .logo img {
+        width: 55px;
+        height: 40px;
+    }
     nav {
-        gap: 8px;
+        gap: 10px;
     }
     nav a {
-        font-size: 6px;
+        font-size: 11px;
     }
-    .logo {
-        font-size: 8px;
+    .dropdown-content {
+        width: 150px;
     }
-    .logo span {
-        font-size: 6px;
+    .dropdown-content a {
+        font-size: 11px;
     }
 
-    /* umkm */
+    /* hero */
     .hero {
         flex-direction: column;
         align-items: stretch;
@@ -416,21 +428,17 @@ footer {
         width: 100%;
     }
     .hero-text h1 {
-        font-size: 28px;
+        font-size: 26px;
     }
     .hero-text p {
-        font-size: 8px;
-
+        font-size: 13px;
         max-width: 100%;
     }
     .hero-image {
         width: 100%;
     }
     .hero-image img {
-        width: 100%;
-
         height: auto;
-
         aspect-ratio: 1.8 / 1;
     }
 
@@ -443,23 +451,12 @@ footer {
     }
     .product-list {
         flex-direction: column;
-
         gap: 15px;
     }
-    .product-card {
-        width: 100%;
-    }
     .product-card img {
-        width: 100%;
-        height: 150px;
-        object-fit: contain;
+        height: auto;
         aspect-ratio: 2 / 1;
-    }
-    .product-card p {
-        font-size: 8px;
-    }
-    .product-card span {
-        font-size: 8px;
+        object-fit: contain;
     }
 
     /* lokasi */
@@ -478,23 +475,19 @@ footer {
     .location-image {
         width: 100%;
     }
-    .location-image img,
     .location-image iframe {
-        width: 100%;
-
         height: auto;
-
         aspect-ratio: 1.6 / 1;
     }
+
     /* footer */
     footer {
         padding: 15px 10px;
+        flex-direction: column;
+        text-align: center;
     }
-    .social {
-        gap: 8px;
-    }
-    .social a {
-        font-size: 6px;
+    .footer-social {
+        justify-content: center;
+        gap: 12px;
     }
 }
-
