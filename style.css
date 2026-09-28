@@ -46,7 +46,7 @@ header {
     width: 100%;
     min-height: 55px;
     padding: 15px 25px;
-    display: flex;
+    display:flex;
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(90deg, var(--header-light), var(--header-soft));
@@ -54,23 +54,13 @@ header {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* logo */
-.logo {
-    font-size: 10px;
-    font-weight: bold;
-    line-height: 10px;
-}
-
-.logo span {
-    display: block;
-    font-size: 10px;
-}
-
 /* gambar logo di header */
 .logo img {
     display: block;
     width: 90px;
     height: 55px;
+    border-radius: 50%;
+    border: 3px;
     object-fit: contain;
 }
 
@@ -85,13 +75,12 @@ nav a {
     color: var(--black);
     font-size: 15px;
     font-weight: bold;
-    cursor: pointer;
     text-decoration: none;
-    white-space: nowrap;
+    white-space: nowrap;  /* cegah teks turun ke baris */
 }
 
 nav a:hover {
-    color: var(--brown);
+    color: var(--red);
 }
 
 /* dropdown */
@@ -122,8 +111,6 @@ nav a:hover {
     font-size: 10px;
     font-weight: bold;
     color: var(--black);
-    text-decoration: none;
-    white-space: normal;
 }
 
 .dropdown-content a:hover {
@@ -178,7 +165,7 @@ nav a:hover {
 }
 
 .button:hover {
-    background-color: var(--brown);
+    background-color: var(--red);
 }
 
 /* gambar di hero */
